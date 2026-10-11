@@ -1,0 +1,99 @@
+package Complex_number;
+
+
+import java.util.Scanner;
+
+public class Complex_number {
+
+    // Complex number class
+    static class Complex1 {
+
+        double real; 
+        double imaginary;
+
+        // Default Constructor
+        Complex1() {
+            real = 0;
+            imaginary = 0;
+        }
+
+        // Parameterized Constructor
+        Complex1(double r, double i) {
+            real = r;
+            imaginary = i;
+        }
+
+        // Addition
+        Complex1 add(Complex1 c) {
+            return new Complex1(real + c.real,
+                                imaginary + c.imaginary);
+        }
+
+        // Subtraction
+        Complex1 subtract(Complex1 c) {
+            return new Complex1(real - c.real,
+                                imaginary - c.imaginary);
+        }
+
+        // Multiplication
+        Complex1 multiply(Complex1 c) {
+            double r = (real * c.real) -
+                       (imaginary * c.imaginary);
+
+            double i = (real * c.imaginary) +
+                       (imaginary * c.real);
+
+            return new Complex1(r, i);
+        }
+
+        // Display
+        void display() {
+            if (imaginary >= 0) {
+                System.out.println(real + " + " + imaginary + "i");
+            } else {
+                System.out.println(real + " - " + (-imaginary) + "i");
+            }
+        }
+    }
+
+    // Main method
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Real and Imaginary part of First Complex Number:");
+        double r1 = sc.nextDouble();
+        double i1 = sc.nextDouble();
+
+        System.out.println("Enter Real and Imaginary part of Second Complex Number:");
+        double r2 = sc.nextDouble();
+        double i2 = sc.nextDouble();
+
+        // Create two complex numbers2
+        Complex1 c1 = new Complex1(r1, i1);
+        Complex1 c2 = new Complex1(r2, i2);
+
+        // Perform operations
+        Complex1 sum = c1.add(c2);
+        Complex1 diff = c1.subtract(c2);
+        Complex1 product = c1.multiply(c2);
+
+        // Display results
+        System.out.println("\nFirst Complex Number:");
+        c1.display();
+
+        System.out.println("Second Complex Number:");
+        c2.display();
+
+        System.out.println("\nAddition:");
+        sum.display();
+
+        System.out.println("Subtraction:");
+        diff.display();
+
+        System.out.println("Multiplication:");
+        product.display();
+
+        sc.close();
+    }
+}
