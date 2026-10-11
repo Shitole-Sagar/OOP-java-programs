@@ -1,0 +1,67 @@
+package Publication1;
+
+import java.util.Scanner;
+
+class Publication {
+    String title;
+    double price;
+    int copies;
+
+    void saleCopy(int qty) {
+        copies = copies - qty;
+        System.out.println("Sale = " + (price * qty));
+    }
+}
+
+class Book extends Publication {
+    String author;
+
+    void orderCopies(int qty) {
+        copies = copies + qty;
+        System.out.println("Book copies ordered = " + qty);
+    }
+}
+
+class Magazine extends Publication {
+    int orderQty;
+    String currentIssue;
+
+    void receiveIssue() {
+        copies = copies + orderQty;
+        System.out.println("Magazine issue received.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        // Book
+        Book b = new Book();
+
+        System.out.print("Enter book title: ");
+        b.title = sc.nextLine();
+
+        System.out.print("Enter author: ");
+        b.author = sc.nextLine();
+
+        System.out.print("Enter book price: ");
+        b.price = sc.nextDouble();
+
+        System.out.print("Enter book copies: ");
+        b.copies = sc.nextInt();
+
+        System.out.print("Enter copies to order: ");
+        int qty = sc.nextInt();
+
+        b.orderCopies(qty);
+
+        System.out.print("Enter copies to sell: ");
+        qty = sc.nextInt();
+
+        b.saleCopy(qty);
+
+        sc.close();
+    }
+}
