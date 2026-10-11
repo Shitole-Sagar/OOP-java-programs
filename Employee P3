@@ -1,0 +1,152 @@
+package employee;
+
+public class Employee {
+
+
+    String empName;
+    int empId;
+    String address;
+    String mailId;
+    String mobileNo;
+    double basicPay;
+
+    Employee(String empName, int empId, String address,
+             String mailId, String mobileNo, double basicPay) {
+
+        this.empName = empName;
+        this.empId = empId;
+        this.address = address;
+        this.mailId = mailId;
+        this.mobileNo = mobileNo;
+        this.basicPay = basicPay;
+    }
+
+    void generateSalarySlip(String designation) {
+
+        double da = basicPay * 0.97;
+        double hra = basicPay * 0.10;
+        double pf = basicPay * 0.12;
+        double staffClubFund = basicPay * 0.001;
+
+        double grossSalary = basicPay + da + hra;
+        double totalDeduction = pf + staffClubFund;
+        double netSalary = grossSalary - totalDeduction;
+
+        System.out.println("\n==============================");
+        System.out.println("         SALARY SLIP");
+        System.out.println("==============================");
+
+        System.out.println("Designation : " + designation);
+        System.out.println("Employee ID : " + empId);
+        System.out.println("Name        : " + empName);
+        System.out.println("Address     : " + address);
+        System.out.println("Mail ID     : " + mailId);
+        System.out.println("Mobile No   : " + mobileNo);
+
+        System.out.println("------------------------------");
+
+        System.out.println("Basic Pay   : " + basicPay);
+        System.out.println("DA (97%)    : " + da);
+        System.out.println("HRA (10%)   : " + hra);
+
+        System.out.println("------------------------------");
+
+        System.out.println("Gross Salary    : " + grossSalary);
+        System.out.println("Total Deduction : " + totalDeduction);
+        System.out.println("Net Salary      : " + netSalary);
+
+        System.out.println("==============================");
+    }
+}
+
+
+class Programmer extends Employee {
+
+    Programmer(String name, int id, String address,
+               String mail, String mobile, double basicPay) {
+
+        super(name, id, address, mail, mobile, basicPay);
+    }
+}
+
+
+class TeamLead extends Employee {
+
+    TeamLead(String name, int id, String address,
+             String mail, String mobile, double basicPay) {
+
+        super(name, id, address, mail, mobile, basicPay);
+    }
+}
+
+
+class AssistantProjectManager extends Employee {
+
+    AssistantProjectManager(String name, int id, String address,
+                            String mail, String mobile, double basicPay) {
+
+        super(name, id, address, mail, mobile, basicPay);
+    }
+}
+
+
+class ProjectManager extends Employee {
+
+    ProjectManager(String name, int id, String address,
+                   String mail, String mobile, double basicPay) {
+
+        super(name, id, address, mail, mobile, basicPay);
+    }
+}
+
+
+class Assi1 {
+
+    public static void main(String[] args) {
+
+        Programmer p = new Programmer(
+                "Sanobar",
+                201,
+                "Baramati",
+                "sanobar@gmail.com",
+                "125656446",
+                50000
+        );
+
+        TeamLead tl = new TeamLead(
+                "Riya",
+                102,
+                "Satara",
+                "riya@gmail.com",
+                "7689034567",
+                80000
+        );
+
+        AssistantProjectManager apm = new AssistantProjectManager(
+                "Sara",
+                103,
+                "Satara",
+                "sara@gmail.com",
+                "647589923",
+                120000
+        );
+
+        ProjectManager pm = new ProjectManager(
+                "Dhruv",
+                104,
+                "Baramati",
+                "dhruv@gmail.com",
+                "6465346537",
+                140000
+        );
+
+
+        p.generateSalarySlip("Programmer");
+
+        tl.generateSalarySlip("Team Lead");
+
+        apm.generateSalarySlip("Assistant Project Manager");
+
+        pm.generateSalarySlip("Project Manager");
+    }
+}
