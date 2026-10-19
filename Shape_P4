@@ -1,0 +1,84 @@
+
+package sagarse;
+
+import java.util.Scanner;
+
+abstract class Shape {
+    protected double dim1, dim2;
+
+    Shape(double a, double b) {
+        dim1 = a;
+        dim2 = b;
+    }
+
+    void setValues(double a, double b) {
+        dim1 = a;
+        dim2 = b;
+    }
+
+    abstract double computeArea();
+}
+
+class Triangle extends Shape {
+    Triangle(double b, double h) {
+        super(b, h);
+    }
+
+    double computeArea() {
+        return 0.5 * dim1 * dim2;
+    }
+}
+
+class Rectangle extends Shape {
+    Rectangle(double l, double w) {
+        super(l, w);
+    }
+
+    double computeArea() {
+        return dim1 * dim2;
+    }
+}
+
+public class Shape_P4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nShape Area Calculator");
+            System.out.println("1. Triangle");
+            System.out.println("2. Rectangle");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = sc.nextInt();
+            Shape obj;
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter base and height: ");
+                    double b = sc.nextDouble();
+                    double h = sc.nextDouble();
+                    obj = new Triangle(b, h);
+                    break;
+
+                case 2:
+                    System.out.print("Enter length and width: ");
+                    double l = sc.nextDouble();
+                    double w = sc.nextDouble();
+                    obj = new Rectangle(l, w);
+                    break;
+
+                case 3:
+                    System.out.println("Exiting program...");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice.");
+                    continue;
+            }
+
+            System.out.println("Area = " + obj.computeArea());
+        }
+    }
+}
